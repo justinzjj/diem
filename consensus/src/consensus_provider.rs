@@ -1,3 +1,11 @@
+/*
+ * @Author: Justin
+ * @Date: 2024-09-26 10:03:25
+ * @fielname:
+ * @version:
+ * @Description:
+ * @LastEditTime: 2024-09-26 10:49:11
+ */
 // Copyright (c) The Diem Core Contributors
 // SPDX-License-Identifier: Apache-2.0
 
@@ -25,6 +33,7 @@ use storage_interface::DbReader;
 use tokio::runtime::{self, Runtime};
 
 /// Helper function to start consensus based on configuration and return the runtime
+// * 初始化入口
 pub fn start_consensus(
     node_config: &NodeConfig,
     mut network_sender: ConsensusNetworkSender,
@@ -34,7 +43,7 @@ pub fn start_consensus(
     diem_db: Arc<dyn DbReader>,
     reconfig_events: diem_channel::Receiver<(), OnChainConfigPayload>,
 ) -> Runtime {
-    let runtime = runtime::Builder::new_multi_thread()
+    let runtime: Runtime = runtime::Builder::new_multi_thread()
         .thread_name("consensus")
         .enable_all()
         .build()

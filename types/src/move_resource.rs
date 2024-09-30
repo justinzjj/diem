@@ -1,8 +1,18 @@
+/*
+ * @Author: Justin
+ * @Date: 2024-09-26 10:03:26
+ * @filename: 
+ * @version: 
+ * @Description: 
+ * @LastEditTime: 2024-09-26 17:09:19
+ */
 // Copyright (c) The Diem Core Contributors
 // SPDX-License-Identifier: Apache-2.0
 
 use crate::{access_path::AccessPath, transaction::Version};
 use anyhow::Result;
+
+//
 
 // TODO combine with ConfigStorage
 pub trait MoveStorage {

@@ -170,6 +170,8 @@ impl Vote {
 
     /// Verifies that the consensus data hash of LedgerInfo corresponds to the vote info,
     /// and then verifies the signature.
+    // @ 这里先验证consensus_data_hash是否和vote_data的hash一致，
+    // @ 然后再验证validator的签名 这里验证的签名是对其中ledger_info的签名
     pub fn verify(&self, validator: &ValidatorVerifier) -> anyhow::Result<()> {
         ensure!(
             self.ledger_info.consensus_data_hash() == self.vote_data.hash(),
@@ -179,9 +181,11 @@ impl Vote {
             self.timeout_signature.is_none() || self.two_chain_timeout.is_none(),
             "Only one timeout should exist"
         );
+        // @ 这里是验证签名，message是ledger_info
         validator
             .verify(self.author(), &self.ledger_info, &self.signature)
             .context("Failed to verify Vote")?;
+
         if let Some(timeout_signature) = &self.timeout_signature {
             validator
                 .verify(self.author(), &self.generate_timeout(), timeout_signature)

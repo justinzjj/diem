@@ -37,6 +37,7 @@ pub enum BlockType {
 #[derive(Deserialize, Serialize, Clone, Debug, PartialEq, Eq, CryptoHasher, BCSCryptoHash)]
 /// Block has the core data of a consensus block that should be persistent when necessary.
 /// Each block must know the id of its parent and keep the QuorurmCertificate to that parent.
+/// @@@ 这里是BlockData
 pub struct BlockData {
     /// Epoch number corresponds to the set of validators that are active for this block.
     epoch: u64,

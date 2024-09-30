@@ -81,6 +81,7 @@ impl SafetyRules {
     }
 
     /// Validity checks
+    // @这里是 SafetyRules 的 verify_proposal 方法，它会验证一个投票提案的合法性
     pub(crate) fn verify_proposal(
         &mut self,
         maybe_signed_vote_proposal: &MaybeSignedVoteProposal,

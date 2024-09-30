@@ -34,6 +34,7 @@ pub mod block_test;
 #[derive(Serialize, Clone, PartialEq, Eq)]
 /// Block has the core data of a consensus block that should be persistent when necessary.
 /// Each block must know the id of its parent and keep the QuorurmCertificate to that parent.
+// @ 这里是block的结构
 pub struct Block {
     /// This block's id as a hash value, it is generated at call time
     #[serde(skip)]
@@ -53,7 +54,7 @@ impl fmt::Debug for Block {
 
 impl Display for Block {
     fn fmt(&self, f: &mut Formatter) -> std::fmt::Result {
-        let nil_marker = if self.is_nil_block() { " (NIL)" } else { "" };
+        let nil_marker: &str = if self.is_nil_block() { " (NIL)" } else { "" };
         write!(
             f,
             "[id: {}{}, epoch: {}, round: {:02}, parent_id: {}]",
@@ -86,7 +87,7 @@ impl Block {
     }
 
     pub fn parent_id(&self) -> HashValue {
-        self.block_data.quorum_cert().certified_block().id()
+        self.block_data.quorum_cert().parent_block().id()
     }
 
     pub fn payload(&self) -> Option<&Payload> {

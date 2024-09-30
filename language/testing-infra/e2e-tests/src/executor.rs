@@ -446,7 +446,7 @@ impl FakeExecutor {
         let validator_set = ValidatorSet::fetch_config(&self.data_store)
             .expect("Unable to retrieve the validator set from storage");
         self.block_time = time_stamp;
-        let new_block = BlockMetadata::new(
+        let new_block: BlockMetadata = BlockMetadata::new(
             HashValue::zero(),
             0,
             self.block_time,

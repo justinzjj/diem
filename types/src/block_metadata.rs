@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 ///    info by calling into the read method of that resource, which would thus give users the
 ///    information such as the current leader.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+// @  这里是核心的 BlockMetadata 结构体，它包含了一个区块的元数据信息
 pub struct BlockMetadata {
     id: HashValue,
     round: u64,

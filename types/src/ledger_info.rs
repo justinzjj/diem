@@ -39,6 +39,7 @@ use std::{
 /// QC is formed on B.
 #[derive(Clone, Debug, Eq, PartialEq, Serialize, Deserialize, CryptoHasher, BCSCryptoHash)]
 #[cfg_attr(any(test, feature = "fuzzing"), derive(Arbitrary))]
+// @ LedgerInfo 结构体
 pub struct LedgerInfo {
     commit_info: BlockInfo,
 

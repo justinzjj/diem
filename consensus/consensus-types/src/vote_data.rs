@@ -10,8 +10,11 @@ use std::fmt::{Display, Formatter};
 #[derive(Deserialize, Serialize, Clone, Debug, PartialEq, Eq, CryptoHasher, BCSCryptoHash)]
 pub struct VoteData {
     /// Contains all the block information needed for voting for the proposed round.
+    /// @ 这里是 VoteData 结构体，它包含了一个区块的信息和它的父区块信息
+    /// @ 这个是当前区块的信息
     proposed: BlockInfo,
     /// Contains all the block information for the block the proposal is extending.
+    /// @ 这个是父区块的信息
     parent: BlockInfo,
 }
 
